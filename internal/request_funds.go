@@ -33,11 +33,11 @@ func (s *Server) RequestFunds(
 	}
 
 	// Verify the provided captcha in the request.
-	log.WithField("ipAddress", ipAddress).Info("Verifying captcha...")
-	if err := s.verifyRecaptcha(ipAddress, req); err != nil {
-		log.WithError(err).Error("Failed captcha verification")
-		return nil, status.Errorf(codes.PermissionDenied, "Failed captcha verification: %v", err)
-	}
+//	log.WithField("ipAddress", ipAddress).Info("Verifying captcha...")
+//	if err := s.verifyRecaptcha(ipAddress, req); err != nil {
+//		log.WithError(err).Error("Failed captcha verification")
+//		return nil, status.Errorf(codes.PermissionDenied, "Failed captcha verification: %v", err)
+//	}
 
 	// Check if ip should be rate limited.
 	if !s.rateLimiter.shouldAllowRequest(ipAddress, req.WalletAddress) {
